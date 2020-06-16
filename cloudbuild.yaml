@@ -6,7 +6,5 @@ steps:
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=us-east4-b'
   - 'CLOUDSDK_CONTAINER_CLUSTER=my-cluster'
-options:
-    machineType: 'N1_STANDARD_1'
 timeout: 600s
 tags: ['mytag1', 'mytag2']
