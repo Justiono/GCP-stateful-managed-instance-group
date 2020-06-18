@@ -1,7 +1,7 @@
 steps:
 - name: 'bash'
-  args: ['./refresh-mig.sh $PROJECT_ID 1']
+  args: ['refresh-mig.sh $PROJECT_ID 1']
 - name: 'bash'
-  args: ['./refresh-mig.sh $PROJECT_ID 2']
+  args: ['refresh-mig.sh $PROJECT_ID 2']
 - name: 'bash'
-  args: ['./refresh-mig.sh $PROJECT_ID 3']
+  args: ['refresh-mig.sh $PROJECT_ID 3']
