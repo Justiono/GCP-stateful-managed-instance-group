@@ -1,12 +1,8 @@
 steps:
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
-  args: ['-c', 'source ./setenv.sh;printenv']
+  args: ['-c', './refresh-mig.sh $PROJECT_ID 1']
 - name: 'bash'
-  args: ['printenv']
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['compute', 'instances', 'stop', '${_VMNAME}', '--zone=${_ZONE}']
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['compute', 'instances', 'start', '${_VMNAME}', '--zone=${_ZONE}']
-timeout: 600s
-tags: ['mytag1', 'mytag2']
+  args: ['./refresh-mig.sh $PROJECT_ID 2']
+- name: 'bash'
+  args: ['./refresh-mig.sh $PROJECT_ID 3']
