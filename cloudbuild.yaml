@@ -1,6 +1,6 @@
 steps:
 - name: 'bash'
-  args: ['source setenv.sh']
+  args: ['source', './setenv.sh']
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['compute', 'instances', 'stop', '${_VMNAME}', '--zone=${_ZONE}']
 - name: 'gcr.io/cloud-builders/gcloud'
