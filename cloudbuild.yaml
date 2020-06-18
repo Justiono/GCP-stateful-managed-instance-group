@@ -1,7 +1,6 @@
 steps:
-- name: 'gcr.io/cloud-builders/gcloud'
-  entrypoint: 'bash'
-  args: ['-c', './refresh-mig.sh $PROJECT_ID 1']
+- name: 'bash'
+  args: ['./refresh-mig.sh $PROJECT_ID 1']
 - name: 'bash'
   args: ['./refresh-mig.sh $PROJECT_ID 2']
 - name: 'bash'
