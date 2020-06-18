@@ -1,5 +1,5 @@
 steps:
-- name: 'bash'
+- name: 'debian'
   args: ['./setenv.sh']
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['compute', 'instances', 'stop', '${_VMNAME}', '--zone=${_ZONE}']
