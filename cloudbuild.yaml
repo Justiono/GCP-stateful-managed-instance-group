@@ -1,7 +1,7 @@
 steps:
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
-  args: ['-c', 'source ./setenv.sh']
+  args: ['-c', 'source ./setenv.sh;printenv']
 - name: 'bash'
   args: ['printenv']
 - name: 'gcr.io/cloud-builders/gcloud'
