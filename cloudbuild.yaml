@@ -1,11 +1,7 @@
 steps:
-- name: 'ubuntu'
-  args:
-  - '-set eEo pipefail'
-  - '-c'
-  - |-
-    export _ZONE=us-east4-c
-    export _VMNAME=jpmigvm01
+- name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args: ['-c', 'source ./setenv.sh']
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['compute', 'instances', 'stop', '${_VMNAME}', '--zone=${_ZONE}']
 - name: 'gcr.io/cloud-builders/gcloud'
