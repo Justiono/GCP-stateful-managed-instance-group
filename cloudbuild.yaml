@@ -1,10 +1,17 @@
 steps:
 - name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+        date +%u > MIGVER.var
+- name: 'gcr.io/cloud-builders/gcloud'
   args: ['compute', 'instances', 'stop', '${_VMNAME}', '--zone=${_ZONE}']
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['compute', 'instances', 'start', '${_VMNAME}', '--zone=${_ZONE}']
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=us-east4-b'
   - 'CLOUDSDK_CONTAINER_CLUSTER=my-cluster'
+
 timeout: 600s
 tags: ['mytag1', 'mytag2']
