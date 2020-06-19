@@ -22,7 +22,7 @@ MIGTEMPLATE=${MIGNAME}-template-$MIGVER
 write_log()
 {
   logmsg=$1
-  echo `date`":"${1} >>$LOGFILE 2>/dev/null
+  echo `date`":"${logmsg} >>$LOGFILE 2>/dev/null
 }
 
 write_log "Setting default project to ${PROJECTID}"
