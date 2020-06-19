@@ -1,5 +1,5 @@
 steps:
-- name: gcr.io/cloud-builders/gcloud
+- name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
   args: ['-c', './refresh-mig.sh $PROJECT_ID 1']
 - name: 'gcr.io/cloud-builders/docker'
