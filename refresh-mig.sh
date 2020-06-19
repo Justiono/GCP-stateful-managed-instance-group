@@ -15,7 +15,7 @@ FILEBASE=`basename $0`
 MIGNAME=${VMNAME}-mig
 MIGVER=$(date +%u)
 CURRDATE=$(date +%F)
-LOGFILE="${FILEBASE%.*}-${CURRDATE}.log"
+LOGFILE="/app/refresh/"${FILEBASE%.*}-${CURRDATE}.log"
 IMAGENAME=${VMNAME}-image-$MIGVER
 MIGTEMPLATE=${MIGNAME}-template-$MIGVER
 
@@ -34,7 +34,8 @@ create_new_image()
   gcloud compute instance-groups managed abandon-instances $MIGNAME \
     --instances $VMNAME \
     --zone=$ZONE >>$LOGFILE 2>&1
-  write_log "Done. Return code:" $?
+    RC=$?
+  write_log "Done. Return code: $RC"
 
   write_log "Stopping the instance..."
   gcloud compute instances stop $VMNAME --zone=$ZONE >>$LOGFILE 2>&1
@@ -102,4 +103,3 @@ case $EXECSTEP in
       update_instance_group
       ;;
 esac
-cat $LOGFILE
