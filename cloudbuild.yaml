@@ -1,6 +1,6 @@
 steps:
 - name: 'ubuntu'
-  args: ['pwd']
+  args: ['/workspace/refresh-mig.sh $PROJECT_ID 1']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['-c', 'refresh-mig.sh $PROJECT_ID 1']
 - name: 'gcr.io/cloud-builders/docker'
