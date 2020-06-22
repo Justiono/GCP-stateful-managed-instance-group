@@ -15,7 +15,7 @@ FILEBASE=`basename $0`
 MIGNAME=${VMNAME}-mig
 MIGVER=$(date +%u)
 CURRDATE=$(date +%F)
-LOGFILE=/app/refresh/${FILEBASE%.*}-${CURRDATE}.log
+LOGFILE=${FILEBASE%.*}-${CURRDATE}.log
 IMAGENAME=${VMNAME}-image-$MIGVER
 MIGTEMPLATE=${MIGNAME}-template-$MIGVER
 
