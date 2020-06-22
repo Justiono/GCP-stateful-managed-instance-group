@@ -15,14 +15,14 @@ FILEBASE=`basename $0`
 MIGNAME=${VMNAME}-mig
 MIGVER=$(date +%u)
 CURRDATE=$(date +%F)
-LOGFILE="/app/refresh/"${FILEBASE%.*}-${CURRDATE}.log"
+LOGFILE=/app/refresh/${FILEBASE%.*}-${CURRDATE}.log
 IMAGENAME=${VMNAME}-image-$MIGVER
 MIGTEMPLATE=${MIGNAME}-template-$MIGVER
 
 write_log()
 {
   logmsg=$1
-  echo `date`":"${logmsg} >>$LOGFILE 2>/dev/null
+  echo `date`":"${1} >>$LOGFILE 2>/dev/null
 }
 
 write_log "Setting default project to ${PROJECTID}"
@@ -34,8 +34,8 @@ create_new_image()
   gcloud compute instance-groups managed abandon-instances $MIGNAME \
     --instances $VMNAME \
     --zone=$ZONE >>$LOGFILE 2>&1
-    RC=$?
-  write_log "Done. Return code: $RC"
+  RC=$?
+  write_log "Done. Return code:$RC"
 
   write_log "Stopping the instance..."
   gcloud compute instances stop $VMNAME --zone=$ZONE >>$LOGFILE 2>&1
