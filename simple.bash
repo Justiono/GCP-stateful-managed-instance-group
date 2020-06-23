@@ -3,4 +3,4 @@ TEMPLATENAME=`gcloud beta compute instance-groups managed list  --filter="zone~u
 CURRVER="${TEMPLATENAME: -1}"
 echo $TEMPLATENAME
 echo $CURRVER
-gcloud compute instance start instances stop jpaddc02 --zone=northamerica-northeast1-c
+gcloud compute instances start jpaddc02 --zone=northamerica-northeast1-c
