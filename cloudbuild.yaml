@@ -1,6 +1,6 @@
 steps:
 - name: 'bash'
-  args: ['bash', './simple.sh']
+  args: ['bash', './simple.bash']
 - name: 'bash'
   args: ['bash', './refresh-mig.sh', '$PROJECT_ID', '2']
 - name: 'bash'
