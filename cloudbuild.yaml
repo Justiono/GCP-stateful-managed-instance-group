@@ -1,13 +1,10 @@
 steps:
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
-  args: ['./simple.bash','$PROJECT_ID', '2']
+  args: ['./refresh-mig.sh', '$PROJECT_ID', '1']
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
-  args: ['./refresh-mig.sh', '$PROJECT_ID', '1']
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['-c', 'refresh-mig.sh $PROJECT_ID 1']
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['-c', 'refresh-mig.sh $PROJECT_ID 2']
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['-c', 'refresh-mig.sh $PROJECT_ID 3']
+  args: ['./refresh-mig.sh', '$PROJECT_ID', '2']
+- name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args: ['./refresh-mig.sh', '$PROJECT_ID', '3']
