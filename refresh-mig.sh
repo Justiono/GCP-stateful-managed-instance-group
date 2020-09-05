@@ -46,7 +46,15 @@ create_new_image()
     --instances $VMNAME \
     --zone=$ZONE 
   RC=$?
-  write_log "Done. Return code:$RC"
+  if [ ${RC} == "0" ]
+  then
+        write_log "Done. Return code:$RC"
+  else
+        write_log "ERR: Abandoning instance failed. Return code:$RC"
+        write_log "Manual investigation is required."
+        write_log "Exiting with the return code 1..."
+	exit 1  
+  fi
 
   write_log "Stopping the instance..."
   gcloud compute instances stop $VMNAME --zone=$ZONE 
@@ -71,6 +79,7 @@ create_new_image()
         write_log "Starting the old instance..."
         gcloud compute instances start $VMNAME --zone=$ZONE
         RC=$?
+        write_log "Starting the old instance... Return code:$RC"
         write_log "Exiting with the return code 10..."
 	exit 10  
   fi
@@ -103,6 +112,7 @@ create_new_template()
         write_log "Starting the old instance..."
         gcloud compute instances start $VMNAME --zone=$ZONE 
         RC=$?
+        write_log "Starting the old instance... Return code:$RC"
         write_log "Exiting with the return code 11..."
         exit 11
   fi
@@ -130,6 +140,7 @@ update_instance_group()
         write_log "Starting the old instance..."
         gcloud compute instances start $VMNAME --zone=$ZONE 
         RC=$?
+        write_log "Starting the old instance... Return code:$RC"
         write_log "Exiting with the return code 12..."
         exit 12
   fi
